@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="jumbotron">
+    <h1 style="text-align:center;">Fine List</h1>
+</div>
+<div>
+<div class="container">
+    <table class="table table-bordered" style="width: 700px">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Card_id</th>
+                <th scope="col">Total fine Due</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in fines %}
+            <tr>
+                <td> {{row.card_id}} </td>
+                <td> {{row.fine}} </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table> <br>
+    <div class="container" style="width: 450px; position:absolute; left:270px;">
+        <form method="get" action="/accounts/payfine">
+        {% csrf_token %}
+            <h3>View fine details for a User</h3>
+            <input type="text" class="form-control" name="id" id="id" placeholder="Card_id"> <br>
+            <button type="submit" class="btn btn-primary">OK</button>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+</html>

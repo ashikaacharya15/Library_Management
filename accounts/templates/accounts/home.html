@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+    <div>
+        <div class="jumbotron">
+            <h1 style="text-align:center;"> Welcome to Library! </h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <form method="get" action="/accounts/all" style="height: 200px; width: 500px">
+                        {% csrf_token %}
+                        <div class="form-group" >
+                            <h2><label for="search_your_book">Search Your Book</label></h2>
+                            <input type="text" class="form-control" name="query_string" id="search_your_book" aria-describedby="searchHelp" placeholder="ISBN/Title/Author">
+                            <small id="searchHelp" class="form-text text-muted">Search either by ISBN or Title or Author.</small>
+                        </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="col-sm">
+                    <form method="get" action="/accounts/checkin" style="height: 200 px; width: 500px">
+                        {% csrf_token %}
+                        <div class="form-group" >
+                            <h2><label for="return_book">Return Book</label></h2>
+                            <input type="text" class="form-control" name="return_book" id="return_book" aria-describedby="returnHelp" placeholder="ISBN/Card_id/Name">
+                            <small id="returnHelp" class="form-text text-muted">Search either by ISBN or Card_id or Borrower Name.</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button> <br>
+                    </form>
+                </div>
+            </div>
+        </div>    <br> <br> <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <form method="get" action="/accounts/create" style="height: 200 px; width: 500px">
+                        {% csrf_token %}
+                        <div class="form-group" >
+                            <h2><label for="return_book">Create New Borrower</label></h2>
+                            <input type="text" class="form-control" name="fname" id="fname" aria-describedby="createHelp" placeholder="First Name"> <br>
+                            <input type="text" class="form-control" name="lname" id="lname" aria-describedby="createHelp" placeholder="Last Name"> <br>
+                            <input type="text" class="form-control" name="ssn" id="ssn" aria-describedby="createHelp" placeholder="SSN xxx-xx-xxxx"> <br>
+                            <input type="text" class="form-control" name="address" id="address" aria-describedby="createHelp" placeholder="Address"> <br>
+                            <input type="text" class="form-control" name="phone" id="phone" aria-describedby="createHelp" placeholder="Phone number">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="col-sm">
+                    <form method="get" action="/accounts/fines" style="height: 200 px; width: 500px">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <h2>Get updated fine list</h2> <br>
+                        <button type="submit" class="btn btn-primary">Display</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

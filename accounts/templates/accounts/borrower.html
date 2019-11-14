@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 style="text-align:center;"> Borrower Details </h1>
+    </div>
+    <div class="container">
+        <form method="get" action="/accounts/borrow/{{ isbn }}">
+                {% csrf_token %}
+                <div class="form-group" >
+                    <label for="card_id">Enter your card ID</label>
+                    <input type="text" class="form-control" name="card_id" id="card_id">
+                </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </form>
+    </div>
+</body>
+</html>

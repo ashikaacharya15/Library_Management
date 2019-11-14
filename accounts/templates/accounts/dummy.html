@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Card_id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in results %}
+                    <tr>
+                        <form method="post" action="/accounts/checkedin/{{ row.loan_id }}">
+                    {% csrf_token %}
+                        <td>{{ row.card_id }}</td>
+                        <td>{{ row.Fname }} {{ row.Lname }} {{row.loan_id }}</td>
+                        <td>{{ row.isbn }}</td>
+                        <td>{{ row.title }}</td>
+                        <td>{{ row.due_date }}</td>
+                        <td> <button type="submit" class="btn btn-primary">Checkin</button> </td>
+
+                    {% endfor %}
+                </form>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>

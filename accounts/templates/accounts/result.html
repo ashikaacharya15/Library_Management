@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+   <div class="jumbotron">
+       <h1 style="text-align:center;">Book List</h1>
+   </div>
+    <div class="container">
+        <ul class="list-group"style="width:100%">
+            {% for row in results %}
+            <form method="post" action="/accounts/borrower/">
+                {% csrf_token %}
+                <button type="button" class="list-group-item list-group-item-action"
+                        name="selected_book">{{ row.isbn }} - {{ row.title }} by {{ row.author }}</button> <br>
+                {% endfor %}
+                <input type="text" class="form-control" name="isbn" id="isbn" placeholder="Type ISBN to borrow"> <br>
+                <button type="submit" class="btn btn-primary">Borrow</button>
+            </form>
+        </ul>
+    </div>
+</body>
+</html>
+

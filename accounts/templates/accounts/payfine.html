@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="jumbotron">
+    <h1 style="text-align:center;">Fine List</h1>
+</div>
+<div>
+<div class="container">
+    <table class="table table-bordered" style="width: 700px">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Card_id</th>
+                <th scope="col">Loan_id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Fine amount</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in loan_list %}
+            <tr>
+                <td> {{row.card_id}} </td>
+                <td> {{row.loan_id}} </td>
+                <td> {{row.title}} </td>
+                <td> {{row.fine}} </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table> <br>
+    <div class="container" style="width: 450px; position:absolute; left:270px;">
+        <form method="get" action="/accounts/updatefine">
+        {% csrf_token %}
+            <h3>Pay fine</h3>
+            <input type="text" class="form-control" name="loan_id" id="loan_id" placeholder="Loan_id"> <br>
+            <button type="submit" class="btn btn-primary">Pay</button>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+</html>
